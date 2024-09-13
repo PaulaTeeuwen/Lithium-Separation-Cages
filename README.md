@@ -18,7 +18,9 @@ This repository contains the scripts and xyz-files relevant for studying the Li-
   ```
 
 3) GFN2-xTB optimization of the cages from step 2 using xtb
-   '''
+
+   ```
    xtb structure.xyz --ohess vtight --alpb acetonitrile --chrg ... > output
-   '''
+   ```
+
 4) r2SCAN-3c single point energy (SPE) calculation using ORCA
