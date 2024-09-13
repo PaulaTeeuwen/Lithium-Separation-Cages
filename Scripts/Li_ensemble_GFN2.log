@@ -1,3 +1,5 @@
+# This file is an example of a M_ensemble_GFN2.log file as created by running submit_job.sh
+
 Running python3 getxyz.py
 Saved conformer 0 to GFN2_0/crest_conformer_0.xyz
 Saved conformer 1 to GFN2_1/crest_conformer_1.xyz
