@@ -37,4 +37,8 @@ This repository contains the scripts and xyz-files relevant for studying the Li-
    ```
 
 ## Clusters
-
+1) Use Quantum Cluster Growth (QCG) algorithm in CREST to build solvent shells of 10 or 20 MeCN molecules around a metal ion (M=Li, Na, K, Ca, Mg).
+   ```
+   /path-to-crest/crest M.xyz -qcg acetonitrile.xyz -nsolv 10 --gfnff --chrg 2 -T $SLURM_CPUS_PER_TASK --alpb acetonitrile --ensemble --mdtime 50 > output
+   ```
+   
