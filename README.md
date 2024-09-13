@@ -37,18 +37,25 @@ This repository contains the scripts and xyz-files relevant for studying the Li-
    ```
 
 ## Clusters
-1) Use Quantum Cluster Growth (QCG) algorithm in CREST to build solvent shells of n = 10 or n = 20 MeCN molecules around a metal ion (M = Li, Na, K, Ca, Mg). Charge c is 1 for Li, Na and K and 2 for Ca and Mg. The K<sub>n=10</sub> cluster is made in three qcg steps. Two additional QCG runs are performed starting from [K@(MeCN)<sub>6</sub>]<sup>1+</sup> and [Ca@(MeCN)<sub>6</sub>]<sup>2+</sup> found in the Cambridge Structural Database (CSD).
-
+1) Use Quantum Cluster Growth (QCG) algorithm in CREST to build solvent shells of n = 10 or n = 20 MeCN molecules around a metal ion (M = Li, Na, K, Ca, Mg). Charge c is 1 for Li, Na and K and 2 for Ca and Mg.
+   
    ```
    /path-to-crest/crest M.xyz -qcg acetonitrile.xyz -nsolv n --gfnff --chrg 2 -T $SLURM_CPUS_PER_TASK --alpb acetonitrile --ensemble --mdtime 50 > output
-
    ```
+   
    Pure solvent clusters are made via the -gsolv keyword for the Na-cluster generation:
    ```
    /path-to-crest/crest Na.xyz -qcg acetonitrile.xyz -nsolv 10 --gfnff --chrg 1 -T $SLURM_CPUS_PER_TASK --alpb acetonitrile **--gsolv** --mdtime 50 --freqlvl gfnff > output 
    ```
+   
+   The K<sub>n=10</sub> cluster is made in three qcg steps:
+   - ```/path-to-crest/crest K.xyz -qcg acetonitrile.xyz -nsolv n --gfnff --chrg 2 -T $SLURM_CPUS_PER_TASK --alpb acetonitrile --ensemble --mdtime 50 > output```
+   - ```/path-to-crest/crest K_n10_step1_crest_best_-2MeCN.xyz -qcg acetonitrile.xyz -nsolv n --gfnff --chrg 2 -T $SLURM_CPUS_PER_TASK --alpb acetonitrile --ensemble --mdtime 50 > output```
+   - ```/path-to-crest/crest K_n10_step2_crest_best_-1MeCN.xyz -qcg acetonitrile.xyz -nsolv n --gfnff --chrg 2 -T $SLURM_CPUS_PER_TASK --alpb acetonitrile --ensemble --mdtime 50 > output```
 
-2) The lowest energy clusters found in crest_best.xyz from each qcg run are used as input for NCI conformational sampling. Four different settings are screened during this sampling step. 
+   Two additional QCG runs are performed starting from [K@(MeCN)<sub>6</sub>]<sup>1+</sup> and [Ca@(MeCN)<sub>6</sub>]<sup>2+</sup> found in the Cambridge Structural Database (CSD).
+
+3) The lowest energy clusters found in crest_best.xyz from each qcg run are used as input for NCI conformational sampling. Four different settings are screened during this sampling step. 
    - ```/path-to-crest/crest crest_best.xyz --gfnff --chrg c --nci --noreftopo --alpb acetonitrile > output```
    - ```/path-to-crest/crest crest_best.xyz --gfnff --chrg c --nci --notopo --noreftopo --alpb acetonitrile > output```
    - ```/path-to-crest/crest crest_best.xyz --gfnff --chrg c --nci --noreftopo --mdlen x3 --alpb acetonitrile > output```
