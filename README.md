@@ -2,7 +2,7 @@
 This repository contains the scripts and xyz-files relevant for studying the Li-separation ability of coordination cages in acetonitrile.
 
 
-# Cages
+## Cages
 1) MM3 modelling in Scigress of the protonated cages
 2) GFN2-xTB optimization of the MM3-cages in step 1 using ORCA (CSD3 cluster)
 
