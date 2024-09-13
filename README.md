@@ -65,9 +65,9 @@ This repository contains the scripts and xyz-files relevant for studying the Li-
   
 4) The conformers reported in the *crest_conformers.xyz* files during the qcg run are extracted and placed in separate folders (*GFN2_i*) using the python script *getxyz.py*. GFN2-xTB calculations are performed on each extracted conformer by submitting the *sbatch.xtb* script using job-arrays to the SLURM scheduler. Then, the Gibbs free energies are extracted and reported in a log-file (*M_ensemble_GFN2_energies.log*) by submitting the *extractenergies.sh* file to the SLURM scheduler. Additionally, the ID-number i and Gibbs free energy of the lowest conformer is reported.
 
-   This whole process is automated by running the *submit_job.sh* script:
+   This whole process is automated by running the *submit_job.sh* script, whose messages are directed to the log-file *M_ensemble_GFN2.log*.:
    
-   ```bash submit_job.sh```
+   ```>> bash submit_job.sh```
    
    The scripts can be found in the folder *Scripts* in this repository, as well as an example of a *M_ensemble_GFN2_energies.log* file.
 
