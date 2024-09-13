@@ -2,6 +2,7 @@
 This repository contains the scripts and xyz-files relevant for studying the Li-separation ability of coordination cages in acetonitrile.
 
 ## Software used
+- [Scigress] (https://www.fqs.pl/en/chemistry/products/scigress) v2.6
 - [ORCA](https://www.faccts.de/orca/) v5.0.4
 - [xtb](https://github.com/grimme-lab/xtb) v6.6.0
 - [CREST](https://github.com/crest-lab/crest) v3.0.2
