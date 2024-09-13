@@ -1,6 +1,6 @@
 #!/bin/bash
 ##SBATCH --time=2-0:00:0
-#SBATCH -J MOC.orca
+#SBATCH -J ORCA
 #SBATCH -o slurm.out
 #SBATCH -e slurm.err
 
