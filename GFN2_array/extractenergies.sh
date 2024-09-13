@@ -22,8 +22,11 @@ exec > "$log_file" 2>&1
 
 echo $element
 
-num_structures=$(cat crest_conformers.xyz | grep "$element" | wc -l)
-#num_structures=$(grep -o "\b60\b" crest_conformers.xyz | wc -l)
+if [[ $element == "Solvent" ]]; then
+    num_structures=$(grep -o "\b60\b" crest_conformers.xyz | wc -l)
+else
+    num_structures=$(cat crest_conformers.xyz | grep "${ELEMENT}" | wc -l)
+fi
 
 num_structures=$((num_structures - 1))
 
