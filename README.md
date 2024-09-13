@@ -4,9 +4,9 @@ This repository contains the scripts and xyz-files relevant for studying the Li-
 
 ## Cages
 1) MM3 modelling in Scigress of the protonated cages
-2) GFN2-xTB optimization of the MM3-cages in step 1 using ORCA (CSD3 cluster)
+2) GFN2-xTB optimization of the MM3-cages in step 1 using *ORCA* (CSD3 cluster)
 
-   ORCA.inp:
+   ORCA.in:
    ```
    ! XTB2 OPT NUMFREQ
    %PAL NPROCS 8 END
@@ -17,13 +17,24 @@ This repository contains the scripts and xyz-files relevant for studying the Li-
    *xyzfile 0 1 trencage_input.xyz
    ```
 
-3) GFN2-xTB optimization of the cages from step 2 using xtb
+3) GFN2-xTB optimization of the cages (with c = 4, 8 or 12) from step 2 using *xtb* (NEST cluster)
 
    ```
-   xtb structure.xyz --ohess vtight --alpb acetonitrile --chrg ... > output
+   xtb structure.xyz --ohess vtight --alpb acetonitrile --chrg c > output
    ```
 
-4) r2SCAN-3c single point energy (SPE) calculation using ORCA
+4) r2SCAN-3c single point energy (SPE) calculation using *ORCA* (NEST cluster)
+   
+   ORCA.in:
+   ```
+   ! r2SCAN-3c ENERGY TightSCF defgrid3 def2/J
+   %maxcore 8000
+   %PAL NPROCS 10 END
+   %CPCM SMD TRUE
+          SMDSOLVENT "MeCN"
+   END
+   *xyzfile 8 1  xtbopt.xyz
+   ```
 
 ## Clusters
 
