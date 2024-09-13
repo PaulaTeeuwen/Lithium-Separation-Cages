@@ -29,16 +29,10 @@ mydir=$(pwd)
 module load xtb/6.5.0
 export PATH=/path/to/xtb:$PATH
 
-##################################################################
-# Creating local scratch folder 
+# Creating local scratch folder ....
 
 export scratchlocation="/path/to/scratch"
-
-if [ ! -d "$scratchlocation" ]; then
-  mkdir -p "$scratchlocation"
-fi
-
-tdir=$(mktemp -d "$scratchlocation/QCGjob__$SLURM_JOB_ID-XXXX_${element}_GFN2_${i}")
+tdir=$(mktemp -d "$scratchlocation/${SLURM_JOB_ID}_${element}_GFN2_${i}")
 
 if [ ! -d "$tdir" ]; then
   echo "Failed to create temporary directory."
