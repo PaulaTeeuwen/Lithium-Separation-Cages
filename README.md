@@ -45,8 +45,11 @@ This repository contains the scripts and xyz-files relevant for studying the Li-
    ```
    Pure solvent clusters are made via the -gsolv keyword for the Na-cluster generation:
    ```
-   /sharedscratch/pp555/bin/crest Na.xyz -qcg acetonitrile.xyz -nsolv 10 --gfnff --chrg 1 -T $SLURM_CPUS_PER_TASK --alpb acetonitrile **--gsolv** --mdtime 50 --freqlvl gfnff > output 
+   /path-to-crest/crest Na.xyz -qcg acetonitrile.xyz -nsolv 10 --gfnff --chrg 1 -T $SLURM_CPUS_PER_TASK --alpb acetonitrile **--gsolv** --mdtime 50 --freqlvl gfnff > output 
    ```
 
-2) The lowest energy clusters found in crest_best.xyz is used as input for NCI conformational sampling.
-   
+2) The lowest energy clusters found in crest_best.xyz from each qcg run are used as input for NCI conformational sampling. Four different settings are screened during this sampling step. 
+   a) ```/path-to-crest/crest crest_best.xyz --gfnff --chrg c --nci --noreftopo --alpb acetonitrile > output```
+   b) ```/path-to-crest/crest crest_best.xyz --gfnff --chrg c --nci --notopo --noreftopo --alpb acetonitrile > output```
+   c) ```/path-to-crest/crest crest_best.xyz --gfnff --chrg c --nci --noreftopo --mdlen x3 --alpb acetonitrile > output```
+   d) ```/path-to-crest/crest crest_best.xyz --gfnff --chrg c --nci --notopo --noreftopo --mdlen x3 --alpb acetonitrile > output```
