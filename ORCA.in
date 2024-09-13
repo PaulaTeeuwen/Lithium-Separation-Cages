@@ -1,7 +1,0 @@
-! r2SCAN-3c ENERGY TightSCF defgrid3 def2/J
-%maxcore 8000
-%PAL NPROCS 10 END
-%CPCM SMD TRUE
-      SMDSOLVENT "MeCN"
-END
-*xyzfile 8 1  xtbopt.xyz
