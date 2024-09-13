@@ -1,5 +1,7 @@
+#This file contains an example of a M_ensemble_GFN2_energies.log file as created by extractenergies.sh:
+
 Li
-265
+266
 Total Free Energies:
 -86.741276447907
 -86.735638937574
