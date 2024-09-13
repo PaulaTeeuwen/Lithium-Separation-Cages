@@ -68,7 +68,7 @@ This repository contains the scripts and xyz-files relevant for studying the Li-
    
    ```bash submit_job.sh```
 
-6) DFT SPE energy calculations are performed on the lowest energy conformers found in step 4 for each metal and setting. The settings are analogous to those used for cages:
+6) DFT SPE energy calculations are performed on the lowest energy conformers found in step 4 for each metal and setting.  The settings are analogous to those used for cages:
    
    ORCA.in:
    ```
@@ -80,3 +80,5 @@ This repository contains the scripts and xyz-files relevant for studying the Li-
    END
    *xyzfile c 1  xtbopt.xyz
    ```
+
+The lowest energy conformers (all settings combined) at the GFN2-xTB level for each metal are shown in the GFN2_lowest_clusters in this github repository. The lowest energy conformer at the r2SCAN-3c//GFN2-xTB level for each metal (all settings combined) are shown in the folder DFT_lowest_clusters.
