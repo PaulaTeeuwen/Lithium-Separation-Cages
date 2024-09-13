@@ -19,6 +19,8 @@ This repository contains the scripts and xyz-files relevant for studying the Li-
 - GFN2_lowest_clusters/: lowest energy conformers of metal-clusters found at GFN2-xTB level
 - DFT_lowest_clusters/: lowest energy conformers of metal-clusters found at r2SCAN-3c//GFN2-xTB level
 
+Here, "*cage*" refers to the type of cage: trencage, trenLi, trenNa, trenK, trenCa, trenMg, trenH, trenHLi, trenHNa, trenHK, trenHCa and trenHMg.
+
 ## Cages
 1) MM3 modelling in Scigress of the protonated cages (local computer).
 2) GFN2-xTB optimization of the MM3-cages in step 1 using *ORCA* (CSD3 cluster). Charge c is 4, 8 or 12 depending on the cage.
