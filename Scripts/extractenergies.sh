@@ -28,9 +28,9 @@ else
     num_structures=$(cat crest_conformers.xyz | grep "${ELEMENT}" | wc -l)
 fi
 
-num_structures=$((num_structures - 1))
-
 echo $num_structures
+
+num_structures=$((num_structures - 1))
 
 energies=()
 
