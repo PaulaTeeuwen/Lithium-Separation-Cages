@@ -1,11 +1,9 @@
 #!/bin/bash
-#SBATCH --time=0-0:10:0
-#SBATCH --mincpus=10
-# Number of MPI tasks
-#SBATCH -n 1
-#SBATCH -J GFN2_ensemble.QCG
-# Number of cores per task
-#SBATCH -c 10
+#SBATCH --time=0-0:10:0        # Job run time
+#SBATCH --mincpus=10           # Minimum number of CPUs
+#SBATCH -n 1                   # Number of MPI tasks
+#SBATCH -J GFN2_ensemble.QCG   # Job name
+#SBATCH -c 10                  # Number of cores per task
 
 #The array is determined by submit_job.sh
 #Submit by >>bash submit_job.sh
