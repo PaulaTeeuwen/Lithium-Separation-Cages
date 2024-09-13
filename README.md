@@ -4,7 +4,7 @@ This repository contains the scripts and xyz-files relevant for studying the Li-
 
 ## Cages
 1) MM3 modelling in Scigress of the protonated cages
-2) GFN2-xTB optimization of the MM3-cages in step 1 using *ORCA* (CSD3 cluster)
+2) GFN2-xTB optimization of the MM3-cages in step 1 using *ORCA* (CSD3 cluster). Charge c is 4, 8 or 12 depending on the cage.
 
    ORCA.in:
    ```
@@ -14,10 +14,10 @@ This repository contains the scripts and xyz-files relevant for studying the Li-
 
    ! ALPB(Acetonitrile)
 
-   *xyzfile 0 1 trencage_input.xyz
+   *xyzfile c 1 input.xyz
    ```
 
-3) GFN2-xTB optimization of the cages (with c = 4, 8 or 12) from step 2 using *xtb* (NEST cluster)
+3) GFN2-xTB optimization of the cages from step 2 using *xtb* (NEST cluster)
 
    ```
    xtb structure.xyz --ohess vtight --alpb acetonitrile --chrg c > output
