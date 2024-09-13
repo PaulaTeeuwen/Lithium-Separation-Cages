@@ -17,7 +17,7 @@ This repository contains the scripts and xyz-files relevant for studying the Li-
    *xyzfile c 1 input.xyz
    ```
 
-3) GFN2-xTB optimization of the cages from step 2 using *xtb* (NEST cluster)
+3) GFN2-xTB optimization of the cages from step 2 using *xtb* (NEST cluster).The trenLiH cage input structure was obtained from XRD.
 
    ```
    xtb structure.xyz --ohess vtight --alpb acetonitrile --chrg c > output
