@@ -37,7 +37,7 @@ if [ ! -d "$tdir" ]; then
 fi
 
 # Sync files to scratch (customize based on what files are needed)
-rsync -av "$dir_path/" "$tdir/"
+cp -r "$dir_path"/* "$tdir"
 
 # Creating nodefile in scratch
 echo $SLURM_NODELIST > "$tdir/${element}_GFN2_${i}.nodes"
