@@ -1,6 +1,18 @@
 # Lithium-Separation-Cages
 This repository contains the scripts and xyz-files relevant for studying the Li-separation ability of coordination cages in acetonitrile.
 
+## Software used
+- ORCA v5.0.4
+- xtb v6.6.0
+- CREST v3.0.2
+- SLURM scheduler (for job arrays)
+- Python 3.9.12 (for script execution)
+
+## Repository Structure
+- Scripts/: contains all bash and python scripts
+- xyz-files/: input/output structures used in calculations
+- GFN2_lowest_clusters/: lowest energy conformers of metal-clusters found at GFN2-xTB level
+- DFT_lowest_clusters/: lowest energy conformers of metal-clusters found at r2SCAN-3c//GFN2-xTB level
 
 ## Cages
 1) MM3 modelling in Scigress of the protonated cages (local computer).
