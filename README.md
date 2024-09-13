@@ -4,7 +4,7 @@ This repository contains the scripts and xyz-files relevant for studying the Li-
 ## Software used
 - [ORCA](https://www.faccts.de/orca/) v5.0.4
 - [xtb](https://github.com/grimme-lab/xtb) v6.6.0
-- CREST(https://github.com/crest-lab/crest) v3.0.2
+- [CREST](https://github.com/crest-lab/crest) v3.0.2
 - SLURM scheduler (for job arrays)
 - Python 3.9.12 (for script execution)
 
