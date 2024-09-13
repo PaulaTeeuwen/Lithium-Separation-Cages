@@ -6,7 +6,7 @@
 ELEMENT="Na"  # Replace with your desired element symbol (Na, Mg, Ca, K)
 
 # Define charge based on element
-if [[ $ELEMENT == "Na" || $ELEMENT == "H" || $ELEMENT == "Li" || $ELEMENT == "K" ]]; then
+if [[ $ELEMENT == "Na" || $ELEMENT == "Li" || $ELEMENT == "K" ]]; then
     CHRG=1
 elif [[ $ELEMENT == "Mg" || $ELEMENT == "Ca" ]]; then
     CHRG=2
