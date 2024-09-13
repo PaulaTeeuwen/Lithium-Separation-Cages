@@ -14,7 +14,6 @@ export SLURM_SUBMIT_DIR
 export SLURM_ARRAY_TASK_ID
 export SLURM_NTASKS
 
-#i=0
 i=$SLURM_ARRAY_TASK_ID
 element="$ELEMENT"  # Ensure ELEMENT is passed from job submission
 
