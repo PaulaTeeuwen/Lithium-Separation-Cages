@@ -1,0 +1,66 @@
+#!/bin/bash
+##SBATCH --time=2-0:00:0
+#SBATCH -J MOC.orca
+#SBATCH -o slurm.out
+#SBATCH -e slurm.err
+
+##SBATCH --mincpus=20
+# Number of MPI tasks
+#SBATCH -n 10
+
+# Number of cores per task
+#SBATCH -c 1
+
+#SBATCH --mem-per-cpu=12G
+
+echo $SLURM_NTASKS > nodes.info
+srun hostname >> nodes.info
+echo $USER >> nodes.info
+pwd >> nodes.info
+mydir=$(pwd)
+
+
+##################################################################
+# Define the function to be executed upon receiving a signal
+handle_scancel() {
+    echo "Cancellation signal received. Cleaning up..."
+    cd $mydir
+    rm /scratch/$USER/$SLURM_JOB_ID/*tmp*
+    scp -r /scratch/$USER/$SLURM_JOB_ID $SLURM_SUBMIT_DIR/$SLURM_JOB_ID-cancelled
+    rm -r /scratch/$USER/$SLURM_JOB_ID
+    exit 
+}
+
+trap 'handle_scancel' USR1 SIGTERM
+
+##################################################################
+# CREATE TEMPORARY DIRECTORY, COPY, AND CHANGE TO IT
+# The temporary directory will have the SLURM job id as its name
+temp=$(mktemp -d XXXXXXXXXXX)
+tdir=$SLURM_JOB_ID
+mv $temp $tdir   
+echo  "/scratch/$USER/$tdir" >> nodes.info
+scp -r ./* $tdir/  2>/dev/null
+rm -r $tdir/$tdir 2>/dev/null
+scp -r $tdir /scratch/$USER/
+rm -r $tdir
+cd /scratch/$USER/$tdir
+#################################################################
+# RUN THE CALCULATION
+# The "&" and the "wait" are imporatnt to catch signals!
+
+#/sharedscratch/pp555/bin/crest input.toml > output &
+/sharedscratch/wales/ORCA/orca ORCA.in > output &
+wait
+
+# Cleanup (IMPORTANT, HUGE FILES!)
+rm *gbw *.tmp* *.ges
+
+
+#################################################################
+
+# COPY EVERYTHING BACK, CHANGE BACK, DELETE TEMPORARY DIRECTORY
+scp -r /scratch/$USER/$tdir/* $mydir/
+cd $mydir
+rm -r /scratch/$USER/$tdir
+
