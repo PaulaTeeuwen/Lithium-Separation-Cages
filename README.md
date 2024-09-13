@@ -53,10 +53,9 @@ This repository contains the scripts and xyz-files relevant for studying the Li-
    - ```/path-to-crest/crest K_n10_step1_crest_best_-2MeCN.xyz -qcg acetonitrile.xyz -nsolv n --gfnff --chrg 2 -T $SLURM_CPUS_PER_TASK --alpb acetonitrile --ensemble --mdtime 50 > output```
    - ```/path-to-crest/crest K_n10_step2_crest_best_-1MeCN.xyz -qcg acetonitrile.xyz -nsolv n --gfnff --chrg 2 -T $SLURM_CPUS_PER_TASK --alpb acetonitrile --ensemble --mdtime 50 > output```
 
-   Additional QCG runs are performed starting from [K@(MeCN)<sub>6</sub>]<sup>1+</sup> and [Na@(MeCN)<sub>6</sub>]<sup>2+</sup> found in the Cambridge Structural Database (CSD). In these cases, n is either 4 or 14 in order to generate clusters with 10 or 20 MeCN molecules.
+   Finally, additional QCG runs are performed starting from [K@(MeCN)<sub>6</sub>]<sup>1+</sup> and [Na@(MeCN)<sub>6</sub>]<sup>2+</sup> found in the Cambridge Structural Database (CSD). In these cases, n is either 4 or 14 in order to generate clusters with 10 or 20 MeCN molecules.
    - ```/path-to-crest/crest KMeCN6_fromXRD.xyz -qcg acetonitrile.xyz -nsolv n --gfnff --chrg 2 -T $SLURM_CPUS_PER_TASK --alpb acetonitrile --ensemble --mdtime 50 > output```
    - ```/path-to-crest/crest NaMeCN6_fromXRD.xyz -qcg acetonitrile.xyz -nsolv n --gfnff --chrg 2 -T $SLURM_CPUS_PER_TASK --alpb acetonitrile --ensemble --mdtime 50 > output```
-
 
 3) The lowest energy clusters found in *crest_best.xyz* from each qcg run are used as input for NCI conformational sampling. Four different settings are screened during this sampling step. After the run, a file called *crest_conformers.xyz* is created.
    - ```/path-to-crest/crest crest_best.xyz --gfnff --chrg c --nci --noreftopo --alpb acetonitrile > output```
