@@ -37,7 +37,7 @@ This repository contains the scripts and xyz-files relevant for studying the Li-
    ```
 
 ## Clusters
-1) Use Quantum Cluster Growth (QCG) algorithm in CREST to build solvent shells of n = 10 or n = 20 MeCN molecules around a metal ion (M = Li, Na, K, Ca, Mg). Charge c is 1 for Li, Na and K and 2 for Ca and Mg.
+1) Use Quantum Cluster Growth (QCG) algorithm in CREST to build solvent shells of n = 10 or n = 20 MeCN molecules around a metal ion (M = Li, Na, K, Ca, Mg). Charge c is 1 for Li, Na and K and 2 for Ca and Mg. A file called *crest_best* is created after each QCG run.
    
    ```
    /path-to-crest/crest M.xyz -qcg acetonitrile.xyz -nsolv n --gfnff --chrg 2 -T $SLURM_CPUS_PER_TASK --alpb acetonitrile --ensemble --mdtime 50 > output
@@ -58,8 +58,24 @@ This repository contains the scripts and xyz-files relevant for studying the Li-
    - ```/path-to-crest/crest NaMeCN6_fromXRD.xyz -qcg acetonitrile.xyz -nsolv n --gfnff --chrg 2 -T $SLURM_CPUS_PER_TASK --alpb acetonitrile --ensemble --mdtime 50 > output```
 
 
-3) The lowest energy clusters found in crest_best.xyz from each qcg run are used as input for NCI conformational sampling. Four different settings are screened during this sampling step. 
+3) The lowest energy clusters found in *crest_best.xyz* from each qcg run are used as input for NCI conformational sampling. Four different settings are screened during this sampling step. After the run, a file called *crest_conformers.xyz* is created.
    - ```/path-to-crest/crest crest_best.xyz --gfnff --chrg c --nci --noreftopo --alpb acetonitrile > output```
    - ```/path-to-crest/crest crest_best.xyz --gfnff --chrg c --nci --notopo --noreftopo --alpb acetonitrile > output```
    - ```/path-to-crest/crest crest_best.xyz --gfnff --chrg c --nci --noreftopo --mdlen x3 --alpb acetonitrile > output```
    - ```/path-to-crest/crest crest_best.xyz --gfnff --chrg c --nci --notopo --noreftopo --mdlen x3 --alpb acetonitrile > output```
+  
+4) The conformers reported in the *crest_conformers.xyz* files during the qcg run are extracted and placed in separate folders (*GFN2_i*) using the python script *getxyz.py*. GFN2-xTB calculations are performed on each extracted conformer by submitting the *sbatch.xtb* script using job-arrays to the SLURM scheduler. Then, the Gibbs free energies are extracted and reported in a log-file (*M_ensemble_GFN2_energies.log*) by submitting the *extractenergies.sh* file to the SLURM scheduler. Additionally, the ID-number i and Gibbs free energy of the lowest conformer is reported. This whole process is automated by running the *submit_job.sh* script.
+   ```bash submit_job.sh```
+
+5) DFT SPE energy calculations are performed on the lowest energy conformers found in step 4 for each metal and setting. The settings are analogous to those used for cages:
+   
+   ORCA.in:
+   ```
+   ! r2SCAN-3c ENERGY TightSCF defgrid3 def2/J
+   %maxcore 8000
+   %PAL NPROCS 10 END
+   %CPCM SMD TRUE
+          SMDSOLVENT "MeCN"
+   END
+   *xyzfile c 1  xtbopt.xyz
+   ```
