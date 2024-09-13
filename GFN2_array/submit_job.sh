@@ -10,6 +10,8 @@ if [[ $ELEMENT == "Na" || $ELEMENT == "Li" || $ELEMENT == "K" ]]; then
     CHRG=1
 elif [[ $ELEMENT == "Mg" || $ELEMENT == "Ca" ]]; then
     CHRG=2
+elif [[ $ELEMENT == "Solvent" ]]; then
+    CHRG=0
 else
     echo "Unsupported element: $ELEMENT"
     exit 1
@@ -24,7 +26,12 @@ exec > "${log_file}" 2>&1
 echo "Running python3 getxyz.py"
 python3 getxyz.py
 
-num_structures=$(cat crest_conformers.xyz | grep "${ELEMENT}" | wc -l)
+if [[ $ELEMENT == "Solvent" ]]; then
+    num_structures=$(grep -o "\b60\b" crest_conformers.xyz | wc -l)
+else
+    num_structures=$(cat crest_conformers.xyz | grep "${ELEMENT}" | wc -l)
+fi
+
 echo "The number of conformers in crest_conformers is $num_structures"
 num_structures=$((num_structures - 1)) #starts at 0
 
