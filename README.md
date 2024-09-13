@@ -8,9 +8,14 @@ This repository contains the scripts and xyz-files relevant for studying the Li-
 - SLURM scheduler (for job arrays)
 - Python 3.9.12 (for script execution)
 
+  For installing these tools, refer to their respective documentation or package managers suitable for your system.
+
 ## Repository Structure
 - Scripts/: contains all bash and python scripts
-- xyz-files/: input/output structures used in calculations
+- MM3_Scigres_cages/: contains all MM3 optimized cage structures (*cage_MM3.mol*)
+- GFN2_ORCA_cages/: contains all GFN2-xTB optimized cage structures (*cage.xyz*), including the files (*cage.in* and *cage_input.xyz*) used as input for the *ORCA* calculations
+- GFN2_xtb_cages/: contains all the GFN2-xTB optimized cage structures (*cage_xtbopt.xyz*), their calculated vibrational spectra (*cage_vibspectrum*) and the input used for the *xtb* calculation (*cage_ORCA.xyz*).
+- DFT_SPE_ORCA_cages/: contains the input (*cage.in*) and output (*cage_output*) files for the r2SCAN-3c SPE calculations on the cages using *ORCA*.
 - GFN2_lowest_clusters/: lowest energy conformers of metal-clusters found at GFN2-xTB level
 - DFT_lowest_clusters/: lowest energy conformers of metal-clusters found at r2SCAN-3c//GFN2-xTB level
 
