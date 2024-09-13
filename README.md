@@ -15,7 +15,7 @@ This repository contains the scripts and xyz-files relevant for studying the Li-
    ! ALPB(Acetonitrile)
 
    *xyzfile 0 1 trencage_input.xyz
-  ```
+   ```
 
 3) GFN2-xTB optimization of the cages from step 2 using xtb
 
@@ -24,3 +24,6 @@ This repository contains the scripts and xyz-files relevant for studying the Li-
    ```
 
 4) r2SCAN-3c single point energy (SPE) calculation using ORCA
+
+## Clusters
+
