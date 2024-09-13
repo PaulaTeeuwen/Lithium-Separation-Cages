@@ -104,4 +104,4 @@ Here, "*cage*" refers to the type of cage: trencage, trenLi, trenNa, trenK, tren
    *xyzfile c 1  xtbopt.xyz
    ```
 
-The lowest energy conformers (all settings combined) at the GFN2-xTB level for each metal are shown in the GFN2_lowest_clusters in this github repository. The lowest energy conformer at the r2SCAN-3c//GFN2-xTB level for each metal (all settings combined) are shown in the folder DFT_lowest_clusters.
+The lowest energy conformers (all settings combined) at the GFN2-xTB level for each metal are shown in the GFN2_lowest_clusters/ folder in this github repository. The lowest energy conformer at the r<sup>2</sup>SCAN-3c//GFN2-xTB level for each metal (all settings combined) are shown in the DFT_lowest_clusters/ folder.
