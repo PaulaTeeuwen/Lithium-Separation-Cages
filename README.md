@@ -48,7 +48,7 @@ This repository contains the scripts and xyz-files relevant for studying the Li-
    /path-to-crest/crest Na.xyz -qcg acetonitrile.xyz -nsolv 10 --gfnff --chrg 1 -T $SLURM_CPUS_PER_TASK --alpb acetonitrile **--gsolv** --mdtime 50 --freqlvl gfnff > output 
    ```
    
-   The K<sub>n=10</sub> cluster is made in three qcg steps:
+   The K<sub>n=10</sub> cluster is made in three consecutive qcg steps:
    - ```/path-to-crest/crest K.xyz -qcg acetonitrile.xyz -nsolv n --gfnff --chrg 2 -T $SLURM_CPUS_PER_TASK --alpb acetonitrile --ensemble --mdtime 50 > output```
    - ```/path-to-crest/crest K_n10_step1_crest_best_-2MeCN.xyz -qcg acetonitrile.xyz -nsolv n --gfnff --chrg 2 -T $SLURM_CPUS_PER_TASK --alpb acetonitrile --ensemble --mdtime 50 > output```
    - ```/path-to-crest/crest K_n10_step2_crest_best_-1MeCN.xyz -qcg acetonitrile.xyz -nsolv n --gfnff --chrg 2 -T $SLURM_CPUS_PER_TASK --alpb acetonitrile --ensemble --mdtime 50 > output```
