@@ -37,7 +37,7 @@ This repository contains the scripts and xyz-files relevant for studying the Li-
    ```
 
 ## Clusters
-1) Use Quantum Cluster Growth (QCG) algorithm in CREST to build solvent shells of n = 10 or n = 20 MeCN molecules around a metal ion (M = Li, Na, K, Ca, Mg). Charge c is 1 for Li, Na and K and 2 for Ca and Mg. The K<sub>(n=10)</sub> cluster is made in three qcg steps. Two additional QCG runs are performed starting from [K@(MeCN)<sub>6</sub>]<sup>1+</sup> and 〖[Ca@(MeCN)<sub>6</sub>]<sup>2+</sup> found in the Cambridge Structural Database (CSD).
+1) Use Quantum Cluster Growth (QCG) algorithm in CREST to build solvent shells of n = 10 or n = 20 MeCN molecules around a metal ion (M = Li, Na, K, Ca, Mg). Charge c is 1 for Li, Na and K and 2 for Ca and Mg. The K<sub>n=10</sub> cluster is made in three qcg steps. Two additional QCG runs are performed starting from [K@(MeCN)<sub>6</sub>]<sup>1+</sup> and [Ca@(MeCN)<sub>6</sub>]<sup>2+</sup> found in the Cambridge Structural Database (CSD).
 
    ```
    /path-to-crest/crest M.xyz -qcg acetonitrile.xyz -nsolv n --gfnff --chrg 2 -T $SLURM_CPUS_PER_TASK --alpb acetonitrile --ensemble --mdtime 50 > output
