@@ -17,8 +17,7 @@ export SLURM_NTASKS
 i=$SLURM_ARRAY_TASK_ID
 element="$ELEMENT"  # Ensure ELEMENT is passed from job submission
 
-dir_path="$SLURM_SUBMIT_DIR/GFN2_${i}"
-#mkdir -p "$dir_path" #already made by getxyz.py
+dir_path="$SLURM_SUBMIT_DIR/GFN2_${i}" #made by getxyz.py
 cd "$dir_path"
 
 echo $SLURM_NTASKS > $dir_path/nodes.info
@@ -28,33 +27,26 @@ pwd >> $dir_path/nodes.info
 mydir=$(pwd)
 
 module load xtb/6.5.0
-export PATH=/sharedscratch/pp555/bin:$PATH
-
+export PATH=/path/to/xtb:$PATH
 
 ##################################################################
 # Creating local scratch folder 
 
-export scratchlocation="/sharedscratch/pcpt3/QCG-tmp"
+export scratchlocation="/path/to/scratch"
 
-if [ ! -d "$scratchlocation" ] #space before closing ]!
-
-then
-
+if [ ! -d "$scratchlocation" ]; then
   mkdir -p "$scratchlocation"
-
 fi
 
 tdir=$(mktemp -d "$scratchlocation/QCGjob__$SLURM_JOB_ID-XXXX_${element}_GFN2_${i}")
 
-# Ensure the directory was created successfully
 if [ ! -d "$tdir" ]; then
   echo "Failed to create temporary directory."
   exit 1
 fi
 
-# Copy only the necessary stuff in submit directory to scratch directory. Add more here if needed.
-rsync -av --exclude='boot' --exclude='home' --exclude='bin' --exclude='dev' --exclude='wbo' --exclude='etc' "$dir_path/" "$tdir/"
-#cp -r "$dir_path"/* "$tdir"/
+# Sync files to scratch (customize based on what files are needed)
+rsync -av "$dir_path/" "$tdir/"
 
 # Creating nodefile in scratch
 echo $SLURM_NODELIST > "$tdir/${element}_GFN2_${i}.nodes"
@@ -69,17 +61,10 @@ echo "Slurm Job ID is: ${SLURM_JOB_ID}" >>  "$dir_path/${element}_GFN2_${i}.out"
 echo "Slurm Job name is: ${SLURM_JOB_NAME}" >>  "$dir_path/${element}_GFN2_${i}.out"
 echo $SLURM_NODELIST >> "$dir_path/${element}_GFN2_${i}.out"
 
-#################################################################
-#Start QCG job. Output file is written directly
-# The "&" and the "wait" are important to catch signals!
-
-
+#Start QCG job
 xtb crest_conformer_${i}.xyz --ohess --alpb acetonitrile --chrg $CHRG > ${element}_GFN2_${SLURM_ARRAY_TASK_ID}_output  &
 wait
 
-#################################################################
-
-# QCG has finished here. Now copy important stuff back (xyz files, GBW files etc.). Add more here if needed.
+# Copy important output back to the original directory and clean up scratch directory
 cp -r "$tdir"/* "$dir_path"
-
 rm -rf "$tdir"
