@@ -23,6 +23,8 @@ exec > "$log_file" 2>&1
 echo $element
 
 num_structures=$(cat crest_conformers.xyz | grep "$element" | wc -l)
+#num_structures=$(grep -o "\b60\b" crest_conformers.xyz | wc -l)
+
 num_structures=$((num_structures - 1))
 
 echo $num_structures
