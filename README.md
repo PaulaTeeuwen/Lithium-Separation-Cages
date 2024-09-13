@@ -33,7 +33,7 @@ This repository contains the scripts and xyz-files relevant for studying the Li-
    %CPCM SMD TRUE
           SMDSOLVENT "MeCN"
    END
-   *xyzfile 8 1  xtbopt.xyz
+   *xyzfile c 1  xtbopt.xyz
    ```
 
 ## Clusters
