@@ -24,7 +24,6 @@ echo $USER >> $dir_path/nodes.info
 pwd >> $dir_path/nodes.info
 mydir=$(pwd)
 
-module load xtb/6.5.0
 export PATH=/path/to/xtb:$PATH
 
 # Creating local scratch folder ....
