@@ -1,0 +1,7 @@
+! XTB2 OPT NUMFREQ
+%PAL NPROCS 8 END
+%maxcore 2658
+
+! ALPB(Acetonitrile)
+
+*xyzfile 4 1 trenH_input.xyz
