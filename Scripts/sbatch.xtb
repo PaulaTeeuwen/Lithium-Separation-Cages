@@ -52,8 +52,8 @@ echo "Slurm Job ID is: ${SLURM_JOB_ID}" >>  "$dir_path/${element}_GFN2_${i}.out"
 echo "Slurm Job name is: ${SLURM_JOB_NAME}" >>  "$dir_path/${element}_GFN2_${i}.out"
 echo $SLURM_NODELIST >> "$dir_path/${element}_GFN2_${i}.out"
 
-#Start GFN2-xtb optimization
-xtb crest_conformer_${i}.xyz --ohess --alpb acetonitrile --chrg $CHRG > ${element}_GFN2_${SLURM_ARRAY_TASK_ID}_output  &
+#Start xtb job
+xtb crest_conformer_${i}.xyz --ohess vtight --alpb acetonitrile --chrg $CHRG > ${element}_GFN2_${SLURM_ARRAY_TASK_ID}_output  &
 wait
 
 # Copy important output back to the original directory and clean up scratch directory
