@@ -24,7 +24,7 @@ Here, "*cage*" refers to the type of cage: trencage, trenLi, trenNa, trenK, tren
 
 ## Cages
 1) MM3 modelling in Scigress of the protonated cages (local computer).
-2) GFN2-xTB optimization of the MM3-cages in step 1 using *ORCA* (CSD3 cluster). Charge c is 4, 8 or 12 depending on the cage.
+2) GFN2-xTB optimization of the MM3-cages in step 1 using *ORCA* (CSD3 cluster). Charge c is 0, 4, 8 or 12 depending on the cage.
 
    ORCA.in:
    ```
