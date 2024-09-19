@@ -16,9 +16,9 @@ This repository contains the scripts and xyz-files relevant for studying the Li-
 - MM3_Scigres_cages/: contains all MM3 optimized cage structures (*cage.mol*)
 - GFN2_ORCA_cages/: contains all GFN2-xTB optimized cage structures (*cage.xyz*), including the files (*cage.in* and *cage_input.xyz*) used as input for the *ORCA* calculations
 - GFN2_xtb_cages/: contains all the GFN2-xTB optimized cage structures (*cage_xtbopt.xyz*), their calculated vibrational spectra (*cage_vibspectrum*) and the input used for the *xtb* calculation (*cage_ORCA.xyz*).
-- DFT_SPE_ORCA_cages/: contains the input (*cage.in*) and output (*cage_output*) files for the r2SCAN-3c SPE calculations on the cages using *ORCA*.
+- DFT_SPE_ORCA_cages/: contains the input (*cage.in*) and output (*cage_output*) files for the r<sup>2</sup>SCAN-3c SPE calculations on the cages using *ORCA*.
 - GFN2_lowest_clusters/: lowest energy conformers of metal-clusters found at GFN2-xTB level
-- DFT_lowest_clusters/: lowest energy conformers of metal-clusters found at r2SCAN-3c//GFN2-xTB level
+- DFT_lowest_clusters/: lowest energy conformers of metal-clusters found at r<sup>2</sup>SCAN-3c//GFN2-xTB level
 
 Here, "*cage*" refers to the type of cage: trencage, trenLi, trenNa, trenK, trenCa, trenMg, trenH, trenHLi, trenHNa, trenHK, trenHCa and trenHMg.
 
@@ -43,7 +43,7 @@ Here, "*cage*" refers to the type of cage: trencage, trenLi, trenNa, trenK, tren
    xtb structure.xyz --ohess vtight --alpb acetonitrile --chrg c > output
    ```
 
-4) r2SCAN-3c single point energy (SPE) calculation using *ORCA* (NEST cluster)
+4) r<sup>2</sup>SCAN-3c single point energy (SPE) calculation using *ORCA* (NEST cluster)
    
    ORCA.in:
    ```
