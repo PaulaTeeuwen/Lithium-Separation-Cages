@@ -85,7 +85,7 @@ Here, "*cage*" refers to the type of cage: trencage, trenLi, trenNa, trenK, tren
   
 4) The conformers reported in the *crest_conformers.xyz* files during the qcg run are extracted and placed in separate folders (*GFN2_i*) using the python script *getxyz.py*. GFN2-xTB calculations are performed on each extracted conformer by submitting the *sbatch.xtb* script using job-arrays to the SLURM scheduler. Then, the Gibbs free energies are extracted and reported in a log-file (*M_ensemble_GFN2_energies.log*) by submitting the *extractenergies.sh* file to the SLURM scheduler. Additionally, the ID-number i and Gibbs free energy of the lowest conformer is reported.
 
-   The entire process is automated by running the *submit_job.sh* script, whose messages are directed to the log-files *M_ensemble_GFN2.log* and *M_ensemble_GFN2_energies.log*.:
+   The entire process is automated by running the *submit_job.sh* script, whose messages are directed to the log-files *M_ensemble_GFN2.log* and *M_ensemble_GFN2_energies.log*:
    
    ```>> bash submit_job.sh```
    
