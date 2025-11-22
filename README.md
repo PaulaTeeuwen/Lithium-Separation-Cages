@@ -1,6 +1,9 @@
 # Lithium-Separation-Cages
 This repository contains the scripts and xyz-files relevant for studying the Li-separation ability of coordination cages in acetonitrile.
 
+Find out more:
+[Publication](https://www.sciencedirect.com/science/article/pii/S2451929425001469?via%3Dihub)
+
 ## Software used
 - [Scigress](https://www.fqs.pl/en/chemistry/products/scigress) v2.6
 - [ORCA](https://www.faccts.de/orca/) v5.0.4
